@@ -21,12 +21,12 @@ GAS = CEA_Obj( oxName='N20', fuelName='Gasoline')
 PsiaOvBar = 14.503773800722
 rankinToKelvin = lambda R: (R-491.67)/1.8 + 273.15 
 
-Pc_list = np.arange(17,40,.5) #bar
+Pc_list = np.arange(5,40,.5) #bar
 Pc_list = Pc_list * PsiaOvBar #bar * psia/bar = psia
 Pe = 10.13 #bar
 Pe = Pe * PsiaOvBar # bar * psia/bar = psia
 MR_list = np.arange(.75,8,.25) 
-PcOvPe_list = Pc_list/10
+PcOvPe_list = Pc_list/Pe
 eps_list = np.arange(40,60,.5)
 subar_list = np.arange(1,10,.5)
 
