@@ -8,15 +8,28 @@ fuel C2H5OH(L)   C 2 H 6 O 1
 h,cal=-66370.0      t(k)=298.15       wt%=100.
 """
 add_new_fuel( 'C2H5OH', fuel_str )
+
+fuel_str2 = """
+fuel C3H8(G) C 3 H 8     wt%=100.
+h,cal=-25020.     t(k)=300.0   rho=0.0025776
+"""
+add_new_fuel( 'propane', fuel_str2 )
+
+fuel_str3 = """
+fuel CH4(G) C 1 H 4     wt%=100.
+h,cal=-3504.9     t(k)=300.0   rho=0.0025592
+"""
+add_new_fuel( 'methane', fuel_str3 )
+
 ox_str = """
 oxid NitrousOxide  N 2.0 O 1.0  wt%=100.00
 h,cal= 19467.0 t(k)=298.15
 """
 add_new_oxidizer( 'N20', ox_str )
 
+PROP = CEA_Obj( oxName='N20', fuelName='propane' )
+METH = CEA_Obj( oxName='N20', fuelName='methane' )
 ETH = CEA_Obj( oxName='N20', fuelName='C2H5OH')
-CH3OH = CEA_Obj( oxName='N20', fuelName='CH3OH')
-GAS = CEA_Obj( oxName='N20', fuelName='Gasoline')
 
 PsiaOvBar = 14.503773800722
 rankinToKelvin = lambda R: (R-491.67)/1.8 + 273.15 
@@ -30,7 +43,7 @@ PcOvPe_list = Pc_list/Pe
 eps_list = np.arange(40,60,.5)
 subar_list = np.arange(1,10,.5)
 
-for fuelObj in [ETH, CH3OH, GAS]:
+for fuelObj in [ETH, METH, PROP]:
     for Pc in Pc_list:
         PcOvPe = Pc/Pe
         for MR in MR_list:
