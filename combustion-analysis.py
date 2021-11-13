@@ -34,7 +34,7 @@ ETH = CEA_Obj( oxName='N20', fuelName='C2H5OH')
 PsiaOvBar = 14.503773800722
 rankinToKelvin = lambda R: (R-491.67)/1.8 + 273.15 
 
-Pc_list = np.arange(17,40,.5) #bar
+Pc_list = np.arange(5,40,.5) #bar
 Pc_list = Pc_list * PsiaOvBar #bar * psia/bar = psia
 Pe = 10.13 #bar
 Pe = Pe * PsiaOvBar # bar * psia/bar = psia
